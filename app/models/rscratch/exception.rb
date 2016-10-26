@@ -13,8 +13,8 @@ module Rscratch
     ### => Model Validations
     validates :exception       , presence: true
     validates :message         , presence: true
-    validates :controller      , presence: true
-    validates :action          , presence: true
+    validates :controller      , presence: false
+    validates :action          , presence: false
     validates :app_environment , presence: true
     validates :status          , presence: true, :inclusion => {:in => STATUS}
                       
@@ -38,6 +38,10 @@ module Rscratch
 
     # Log an exception
     def self.log(_exception,_request) 
+      if _request.nil?
+          _request = OpenStruct.new
+          _request.filtered_parameters = { "controller" => "", "action" => "" }
+      end
       _exc = self.find_or_create(_exception,_request.filtered_parameters["controller"].camelize,_request.filtered_parameters["action"],Rails.env.camelize)
       unless _exc.ignored?
         _log = ExceptionLog.new

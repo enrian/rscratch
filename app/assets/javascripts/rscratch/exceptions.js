@@ -133,7 +133,9 @@ $(document).ready(function() {
       $(".current-log").html(page);
 
       // Setting log data
-      $(".ex-backtrace").html(rData.data.log.backtrace);
+      btr = rData.data.log.backtrace;
+      btr = btr.replace(/\\n/g,"<br>");
+      $(".ex-backtrace").html(btr);
       $(".ex-params").html(rData.data.log.parameters);
       rData.response = rData.data;
       over_data = JST['rscratch/templates/exception_overview'](rData);

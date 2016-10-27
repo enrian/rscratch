@@ -8,7 +8,7 @@ function load_dashboard_UI_components() {
 
   // AJAX Request
   var request = $.ajax({
-    url: "/rscratch/dashboard/index.json",
+    url: location.pathname + "/dashboard/index.json",
     method: "GET",
     dataType: "json",
   });
@@ -16,7 +16,7 @@ function load_dashboard_UI_components() {
     load_exception_line_chart(data);
   });
   request.fail(function( jqXHR, textStatus ) {
-    alert("Sorry Something Went Wrong");
+    alert("Sorry something went wrong!");
     // Materialize.toast('Sorry somethnig went wrong while crunching data, please try after sometime!', 5000);
   });
 }

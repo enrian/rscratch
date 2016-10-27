@@ -51,7 +51,7 @@ $(document).ready(function() {
     var request;
     request = $.ajax({
       type: 'POST',
-      url: "/rscratch/exceptions/" + exception_id + "/resolve.json",
+      url: location.pathname + exception_id + "/resolve.json",
       dataType: "json"
     });    
     request.done(function(rData, textStatus, jqXHR) {
@@ -69,7 +69,7 @@ $(document).ready(function() {
     var request;
     request = $.ajax({
       type: 'POST',
-      url: "/rscratch/exceptions/" + exception_id + "/toggle_ignore.json",
+      url: location.pathname + exception_id + "/toggle_ignore.json",
       dataType: "json"
     });    
     request.done(function(rData, textStatus, jqXHR) {
@@ -103,7 +103,7 @@ $(document).ready(function() {
     var request;
     request = $.ajax({
       type: 'GET',
-      url: "/rscratch/exceptions/" + exception_id + ".json?page=" + page,
+      url: location.pathname + "/" + exception_id + ".json?page=" + page,
       dataType: "json"
     });
     request.done(function(rData, textStatus, jqXHR) {

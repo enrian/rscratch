@@ -2,14 +2,8 @@
 %html
   %head
     %title Rscratch | Track Exceptions and Bugs of your Rails application
-    / Import Google Icon Font
-    %link{:href => "http://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}
-    / Import materialize.css
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css", :rel => "stylesheet"}
-    / Compiled and minified JavaScript
     = stylesheet_link_tag "rscratch/application", :media => "all"
     = javascript_include_tag "rscratch/application"
-    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"}
     = csrf_meta_tags
   %body
     .navbar-fixed
@@ -17,19 +11,14 @@
         .nav-wrapper
           %ul.left
             %li
-              %h1.logo-wrapper{:style => ""}
+              %h1.logo-wrapper
                 %a{:href => "/rscratch"}
-                  %img{:alt => "Rscratch", :height => "55", :src => "http://rscratch.github.io/rscratch_logo.png"}
+                  =image_tag 'rscratch/rscratch_logo.png', :alt => "Rscratch", :height => "55"
                   %span.logo-text RScratch
           %ul#nav-mobile.left.hide-on-med-and-down.grey-text
             %li{:class => "#{'active' if current_page?(root_path)}"}
-              %a.grey-text.text-darken-2{:href => root_path} DASHBOARD          
+              %a.grey-text.text-darken-2{:href => root_path} DASHBOARD
             %li{:class => "#{'active' if current_page?(exceptions_path)}"}
               %a.grey-text.text-darken-2{:href => exceptions_path} EXCEPTIONS
-            / %li
-            /   %a.grey-text.text-darken-2{:href => "#"} CONFIGURATIONS
-          %ul.right.hide-on-med-and-down
-            %li
-              %a.waves-effect.waves-light.btn.green.darken-1{:href => "https://github.com/avishekjana/rscratch", :target => "_blank"}
-                Fork on Github
-    = yield    
+
+    = yield
